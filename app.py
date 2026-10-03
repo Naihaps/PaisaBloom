@@ -382,9 +382,12 @@ elif page == "🌱 Daily Challenge":
         f"{len(st.session_state.completed_challenges)} "
         f"of {len(challenges)} challenges completed"
     )
-    st.progress(
-        len(st.session_state.completed_challenges) / len(challenges)
-    )
+    progress = min(
+    1.0,
+    len(st.session_state.completed_challenges) / len(challenges)
+)
+
+st.progress(progress)
 
 # ---------------- MONEY INSIGHTS ----------------
 elif page == "📊 Money Insights":
